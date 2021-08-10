@@ -44,7 +44,7 @@ public class Fase1{
         Console.WriteLine("Do you wanna play it in English or Portuguese?");
         Console.WriteLine("Você quer jogar o jogo em Inglês ou em Português?");
         Console.WriteLine("Type [En] to English, escreva [Pt] para Português.");
-        string idioma="";
+        string idioma;
         idioma=Console.ReadLine();
 
         switch(idioma){
@@ -66,7 +66,7 @@ public class Fase1{
                 break;
         }
 
-        if(idioma=!"Pt" && idioma=!"En"){
+        if(idioma!="Pt" && idioma!="En"){
             Console.WriteLine("Error trying to choose an language. Try it again.");
             Console.WriteLine("Falha ao tentar selecionar o idioma. Tente novamente.");
             System.Threading.Thread.Sleep(5000);
@@ -105,69 +105,71 @@ public class Fase1{
                     escolha1='e';
                     break;
             }
-        }
-
-        if(escolha1=='q'){
-            Personagem1.vida=400;
-            Console.WriteLine("Infelizmente o pulo não foi alto suficiente, você levou 100 de dano, ficando com {0} de vida.",Personagem1.vida);
-        }else if(escolha1=='w'){
-            Console.WriteLine("Por muito pouco você escapou dos punhos fortes de {0}.",primeiroMonstro.nome);
-        }else if(escolha1=='e'){
-            Personagem1.vida=250;
-            Console.WriteLine("Que pena, você levou muito dano, mas ainda há esperança. Sua vida agora é: {0}",Personagem1.vida);
-        }else{
-            Console.WriteLine("Sua escolha foi inválida, por gentileza, tente novamente...");
-            System.Threading.Thread.Sleep(5000);
-            goto tentativaEscolha1;
-        }
-        tentativaEscolha2:
-        if(Personagem1.vida==500){
-            Console.Write("\nCerto, com seu minuscioso movimento para a esquerda, agora você pode: ");
-            Console.Write("[q] Atacar a perna de {0} | [w] Atacar o braço de {0} | [e] Atacar a barriga de {0}: ",primeiroMonstro.nome);
-            char escolha2='a';
-            escolha2=Convert.ToChar(Console.ReadLine());
-            switch(escolha2){
-                case 'q':
-                case 'Q':
-                    escolha2='q';
-                    break;
-                case 'w':
-                case 'W':
-                    escolha2='w';
-                    break;
-                case 'e':
-                case 'E':
-                    escolha2='e';
-                    break;
-            }
-            if(escolha2=='q'){
-                Console.WriteLine("");
-            }else if(escolha2=='w'){
-                Console.WriteLine("");
-            }else if(escolha2=='e'){
-                Console.WriteLine("{0} ficou atordoado de dor, sua vida total era: {1}.",primeiroMonstro.vida);
-                primeiroMonstro.vida=1000-450;
-                Console.WriteLine("Com seu Ataque de 450 de dano, agora, {0} está com {1} de vida.\nContinue assim para mata-lo com Maestria.",primeiroMonstro.nome,primeiroMonstro.vida);
+        
+            if(escolha1=='q'){
+                Personagem1.vida=400;
+                Console.WriteLine("Infelizmente o pulo não foi alto suficiente, você levou 100 de dano, ficando com {0} de vida.",Personagem1.vida);
+                Console.WriteLine("Meio atordoado, levantando e segurando sua espada, você pode: ");
+                Console.Write("\n[q] Enfiar sua espada na barriga de {0} | [w]  | [e] .",primeiroMonstro.nome);
+            }else if(escolha1=='w'){
+                Console.WriteLine("Por muito pouco você escapou dos punhos fortes de {0}.",primeiroMonstro.nome);
+                if(Personagem1.vida==500){
+                    Console.Write("Com seu minuscioso movimento para a esquerda, agora você pode: ");
+                    Console.Write("[q] Atacar a perna de {0} | [w] Atacar o braço de {0} | [e] Atacar a barriga de {0}: ",primeiroMonstro.nome);
+                    tentativaEscolha2:
+                    char escolha2;
+                    escolha2=Convert.ToChar(Console.ReadLine());
+                    switch(escolha2){
+                        case 'q':
+                        case 'Q':
+                            escolha2='q';
+                            break;
+                        case 'w':
+                        case 'W':
+                            escolha2='w';
+                            break;
+                        case 'e':
+                        case 'E':
+                            escolha2='e';
+                            break;
+                    }
+                    if(escolha2=='q'){
+                        Console.WriteLine("oi");
+                    }else if(escolha2=='w'){
+                        Console.WriteLine("ola");
+                    }else if(escolha2=='e'){
+                        Console.WriteLine("{0} ficou atordoado de dor, sua vida total era: {1}.",primeiroMonstro.vida);
+                        primeiroMonstro.vida=1000-450;
+                        Console.WriteLine("Com seu Ataque de 450 de dano, agora, {0} está com {1} de vida.\nContinue assim para mata-lo com Maestria.",primeiroMonstro.nome,primeiroMonstro.vida);
+                    }else{
+                    Console.WriteLine("Sua escolha foi inválida, por gentileza, tente novamente...");
+                        System.Threading.Thread.Sleep(5000);
+                        goto tentativaEscolha2;
+                    }
+                }
+            }else if(escolha1=='e'){
+                Personagem1.vida=250;
+                Console.WriteLine("Que pena, você levou muito dano, mas ainda há esperança. Sua vida agora é: {0}",Personagem1.vida);
             }else{
-            Console.WriteLine("Sua escolha foi inválida, por gentileza, tente novamente...");
+                Console.WriteLine("Sua escolha foi inválida, por gentileza, tente novamente...");
                 System.Threading.Thread.Sleep(5000);
-                goto tentativaEscolha2;
+                goto tentativaEscolha1;
             }
-        }   
+        }
     }
 }
 
-public int Ataque1(){
-    int dano=150;
-    return dano;
-}
+//public int Ataque1(){
+ //   int dano=150;
+  //  return dano;
+//}
 
-public int Ataque2(){
-    int dano=50;
-    return dano;
-}
+//public int Ataque2(){
+ //   int dano=50;
+  //  return dano;
+//}
 
-public int Ataque3(){
-    int dano=450;
-    return dano;
-}
+//public int Ataque3(){
+ //   int dano=450;
+  //  return dano;
+//}
